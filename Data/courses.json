@@ -1,0 +1,22 @@
+[
+  {
+    "courseNumber": "C101",
+    "title": "C# Grundkurs",
+    "courseType": 0,
+    "weekAmount": 4,
+    "schedule": {
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-27"
+    }
+  },
+  {
+    "courseNumber": "C102",
+    "title": "Webbutveckling",
+    "courseType": 1,
+    "weekAmount": 4,
+    "schedule": {
+      "startDate": "2027-01-11",
+      "endDate": "2027-02-05"
+    }
+  }
+]
