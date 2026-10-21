@@ -54,6 +54,9 @@ class Program
             new DateOnly(2022, 3, 1)
         );
 
+        course1.AddStudent(student1);
+        course1.AddStudent(student2);
+
         courseService.AddCourse(course1);
         courseService.AddCourse(course2);
 

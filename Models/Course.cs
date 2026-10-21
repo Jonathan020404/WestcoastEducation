@@ -3,45 +3,39 @@ using System.Text.Json.Serialization;
 
 namespace WestcoastEducation.Models;
 
-public class Course
+public class Course(
+    string courseNumber,
+    string title,
+    CourseType courseType,
+    int weekAmount,
+    DateOnly startDate,
+    DateOnly endDate
+)
 {
-    public string CourseNumber { get; set; }
-    public string Title { get; set; }
-    public CourseType CourseType { get; set; }
-    public int WeekAmount { get; set; }
-    public Schedule Schedule { get; }
+    public string CourseNumber { get; set; } = courseNumber;
+    public string Title { get; set; } = title;
+    public CourseType CourseType { get; set; } = courseType;
+    public int WeekAmount { get; set; } = weekAmount;
+    public DateOnly StartDate { get; } = startDate;
+    public DateOnly EndDate { get; } = endDate;
 
-    public Course(
-        string courseNumber,
-        string title,
-        CourseType courseType,
-        int weekAmount,
-        DateOnly startDate,
-        DateOnly endDate
-    )
+    [JsonIgnore]
+    public Schedule Schedule { get; } = new Schedule(startDate, endDate);
+
+    public List<Student> Students { get; set; } = [];
+
+    public bool AddStudent(Student newStudent)
     {
-        CourseNumber = courseNumber;
-        Title = title;
-        CourseType = courseType;
-        WeekAmount = weekAmount;
+        foreach (var student in Students)
+        {
+            if (student.IdentityNumber == newStudent.IdentityNumber)
+            {
+                return false;
+            }
+        }
 
-        Schedule = new Schedule(startDate, endDate);
-    }
-
-    [JsonConstructor]
-    public Course(
-        string courseNumber,
-        string title,
-        CourseType courseType,
-        int weekAmount,
-        Schedule schedule
-    )
-    {
-        CourseNumber = courseNumber;
-        Title = title;
-        CourseType = courseType;
-        WeekAmount = weekAmount;
-        Schedule = new Schedule(schedule.StartDate, schedule.EndDate);
+        Students.Add(newStudent);
+        return true;
     }
 
     public string GetInfo()
