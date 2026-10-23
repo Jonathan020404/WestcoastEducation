@@ -1,23 +1,15 @@
-using System;
-
 namespace WestcoastEducation.Models;
 
-public class EducationManager : Teacher
+public class EducationManager(
+    string firstName,
+    string lastName,
+    string phoneNumber,
+    string identityNumber,
+    string field,
+    DateOnly employmentDate
+) : Teacher(firstName, lastName, phoneNumber, identityNumber, field)
 {
-    public DateOnly EmploymentDate { get; set; }
-
-    public EducationManager(
-        string firstName,
-        string lastName,
-        string phoneNumber,
-        string identityNumber,
-        string field,
-        DateOnly employmentDate
-    )
-        : base(firstName, lastName, phoneNumber, identityNumber, field)
-    {
-        EmploymentDate = employmentDate;
-    }
+    public DateOnly EmploymentDate { get; set; } = employmentDate;
 
     public override string GetInfo()
     {

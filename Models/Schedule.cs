@@ -1,15 +1,7 @@
-using System;
-
 namespace WestcoastEducation.Models;
 
-public class Schedule
+public class Schedule(DateOnly startDate, DateOnly endDate)
 {
-    public DateOnly StartDate { get; }
-    public DateOnly EndDate { get; }
-
-    public Schedule(DateOnly startDate, DateOnly endDate)
-    {
-        StartDate = startDate;
-        EndDate = endDate;
-    }
+    public DateOnly StartDate { get; } = startDate;
+    public DateOnly EndDate { get; } = endDate;
 }

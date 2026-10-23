@@ -1,24 +1,16 @@
-using System;
-
 namespace WestcoastEducation.Models;
 
-public class Teacher : Person
+public class Teacher(
+    string firstName,
+    string lastName,
+    string phoneNumber,
+    string identityNumber,
+    string field
+) : Person(firstName, lastName, phoneNumber, identityNumber)
 {
-    public string Field { get; set; }
+    public string Field { get; set; } = field;
 
     public List<Course> Courses { get; set; } = new();
-
-    public Teacher(
-        string firstName,
-        string lastName,
-        string phoneNumber,
-        string identityNumber,
-        string field
-    )
-        : base(firstName, lastName, phoneNumber, identityNumber)
-    {
-        Field = field;
-    }
 
     public override string GetInfo()
     {
